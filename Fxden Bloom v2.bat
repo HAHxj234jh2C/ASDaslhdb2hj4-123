@@ -1,12 +1,12 @@
 @echo off
 
-Title Fxden Token Bundle 
+Title Fxden Bloom V2
 color 5
 chcp 65001 >nul 2>&1
 cls
 
 
-echo Press Enter To Activate Token Bundle.
+echo Press Enter To Activate Bloom V2.
 pause >nul
 echo. 
 @echo off
@@ -356,7 +356,7 @@ Reg.exe add "HKLM\SYSTEM\CurrentControlSet\services\Tcpip\Parameters" /v "MaxUse
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\services\Tcpip\Parameters" /v "DisableTaskOffload" /t REG_DWORD /d "1" /f
 cls
-echo Token Bundle applied successfully! Have fun!!!
+echo Tweak V2 applied successfully! Have fun!!!
 pause
 
 
