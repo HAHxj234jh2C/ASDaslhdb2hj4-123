@@ -5,6 +5,27 @@ color 5
 chcp 65001 >nul 2>&1
 cls
 
+setlocal
+set "FOUND=0"
+
+for %%P in (
+    FortniteClient-Win64-Shipping.exe
+    FortniteClient-Win64-Shipping_EAC.exe
+    FortniteClient-Win64-Shipping_BE.exe
+    FortniteLauncher.exe
+) do (
+    tasklist /FI "IMAGENAME eq %%P" | find /I "%%P" >nul && set "FOUND=1"
+)
+
+if "%FOUND%"=="0" (
+    echo Fortnite is not running. Please launch it first.
+    timeout /t 5
+    exit /b
+) else (
+    echo Fortnite is running. Applying tweaks...
+)
+timeout 4 >nul
+cls
 
 echo Press Enter To Activate Bloom V2.
 pause >nul
@@ -13,7 +34,7 @@ echo.
 echo All credits belong to Fxden
 echo Failure to comply with TOS will result in a HWID Ban and blacklist from server/key
 @echo off
-echo Applying Token bundle...
+echo Applying Bloom V2...
 
 
 reg add "HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Copy To" /ve /t REG_SZ /d "{C2FBB630-2971-11D1-A18C-00C04FD75D13}" /f
