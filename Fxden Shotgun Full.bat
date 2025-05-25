@@ -5,7 +5,27 @@ color a
 chcp 65001 >nul 2>&1
 cls
 
+setlocal
+set "FOUND=0"
 
+for %%P in (
+    FortniteClient-Win64-Shipping.exe
+    FortniteClient-Win64-Shipping_EAC.exe
+    FortniteClient-Win64-Shipping_BE.exe
+    FortniteLauncher.exe
+) do (
+    tasklist /FI "IMAGENAME eq %%P" | find /I "%%P" >nul && set "FOUND=1"
+)
+
+if "%FOUND%"=="0" (
+    echo Fortnite is not running. Please launch it first.
+    timeout /t 5
+    exit /b
+) else (
+    echo Fortnite is running. Applying tweaks...
+)
+timeout 4 >nul
+cls
 
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v "CpuPriorityClass" /t REG_DWORD /d "3" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v "IoPriority" /t REG_DWORD /d "3" /f
