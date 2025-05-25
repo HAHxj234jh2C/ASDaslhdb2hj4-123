@@ -1,18 +1,24 @@
 @echo off
-Title Fxden Bloom Full
-color a
-chcp 65001 >nul 2>&1
-cls
+setlocal
+set "FOUND=0"
 
-
-tasklist /FI "IMAGENAME eq FortniteClient-Win64-Shipping.exe" | find /I "FortniteClient-Win64-Shipping.exe" >nul
-if errorlevel 1 (
-    echo Fortnite is not running. Please start the game before applying tweaks.
-    pause
-    exit
+for %%P in (
+    FortniteClient-Win64-Shipping.exe
+    FortniteClient-Win64-Shipping_EAC.exe
+    FortniteClient-Win64-Shipping_BE.exe
+    FortniteLauncher.exe
+) do (
+    tasklist /FI "IMAGENAME eq %%P" | find /I "%%P" >nul && set "FOUND=1"
 )
 
-echo Fortnite is running. Applying tweaks...
+if "%FOUND%"=="0" (
+    echo Fortnite is not running. Please launch it first.
+    timeout /t 5
+    exit /b
+) else (
+    echo Fortnite is running. Applying tweaks...
+)
+
 cls
 
 reg add "HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Copy To" /ve /t REG_SZ /d "{C2FBB630-2971-11D1-A18C-00C04FD75D13}" /f
