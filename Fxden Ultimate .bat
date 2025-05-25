@@ -5,6 +5,29 @@ chcp 65001 >nul
 reg add "HKCU\CONSOLE" /v "VirtualTerminalLevel" /t REG_DWORD /d "1" /f >nul
 mode con cols=80 lines=20
 color 05
+
+setlocal
+set "FOUND=0"
+
+for %%P in (
+    FortniteClient-Win64-Shipping.exe
+    FortniteClient-Win64-Shipping_EAC.exe
+    FortniteClient-Win64-Shipping_BE.exe
+    FortniteLauncher.exe
+) do (
+    tasklist /FI "IMAGENAME eq %%P" | find /I "%%P" >nul && set "FOUND=1"
+)
+
+if "%FOUND%"=="0" (
+    echo Fortnite is not running. Please launch it first.
+    timeout /t 5
+    exit /b
+) else (
+    echo Fortnite is running. Applying tweaks...
+)
+timeout 4 >nul
+cls
+
 goto loading
 :loading
 cls
