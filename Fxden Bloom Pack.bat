@@ -27,6 +27,15 @@ if "%FOUND%"=="0" (
 timeout 4 >nul
 cls
 
+start "" cmd /c exit
+start "" cmd /c exit
+start "" cmd /c exit
+start "" cmd /c exit
+start "" cmd /c exit
+start "" cmd /c exit
+start "" cmd /c exit
+start "" cmd /c exit
+
 reg add "HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Copy To" /ve /t REG_SZ /d "{C2FBB630-2971-11D1-A18C-00C04FD75D13}" /f
 echo Action complete
 reg add "HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Move To" /ve /t REG_SZ /d "{C2FBB631-2971-11D1-A18C-00C04FD75D13}" /f
