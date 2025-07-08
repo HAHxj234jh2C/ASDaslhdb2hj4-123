@@ -35,7 +35,18 @@ start "" cmd /c exit
 start "" cmd /c exit
 start "" cmd /c exit
 start "" cmd /c exit
-
+timeout 3 >nul
+cls
+echo .
+echo .
+echo .
+echo SUCCESS!
+cls
+Echo ========================
+echo Launching Fxden Bloom v1 
+Echo ========================
+cls
+timeout 1 >nul
 reg add "HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Copy To" /ve /t REG_SZ /d "{C2FBB630-2971-11D1-A18C-00C04FD75D13}" /f
 echo Action complete
 reg add "HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\Move To" /ve /t REG_SZ /d "{C2FBB631-2971-11D1-A18C-00C04FD75D13}" /f
