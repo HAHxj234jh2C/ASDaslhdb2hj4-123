@@ -3,6 +3,11 @@ Title Fxden Bloom Full
 color a
 chcp 65001 >nul 2>&1
 cls
+start "" cmd /c exit
+start "" cmd /c exit
+start "" cmd /c exit
+start "" cmd /c exit
+
 
 setlocal
 set "FOUND=0"
